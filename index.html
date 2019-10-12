@@ -39,7 +39,7 @@
             function sendData(location, review)
             {
               var url = "http://afternoon-garden-34580.herokuapp.com/insert?";
-              var params = "place=" + location + "&review=" + encodeURIComponent(review) + "&rating=" + rating;
+              var params = "place=" + location + "&review=" + review)+ "&rating=" + rating.toString();
               var xhr = new XMLHttpRequest();
               xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
               xhr.open("GET", url + params, "true");
