@@ -103,7 +103,7 @@ a:hover {
 }
 
 body, html {
-
+  
     padding:0;
 
     margin:0;
@@ -111,7 +111,7 @@ body, html {
 }
 
 body {
-
+    font-family: Helvetica, "Times New Roman," Cambira;
     background-color: #e2e2e2;
 
 }
