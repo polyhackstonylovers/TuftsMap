@@ -1,0 +1,187 @@
+<html>
+
+    <head>
+
+        <title>Polyhack Project Site</title>
+
+        <link rel="stylesheet" type="text/css" href="stylish.css">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script href="jquery.js"></script>
+
+    </head>
+
+    <body>
+
+
+        <h1>Leave us a rating!</h1>
+
+        <form>
+
+            <select id="locationChoice">
+
+                <option>The Cannon</option>
+
+                <option>Tisch</option>
+
+                <option>Halligan</option>
+
+                <option>SEC</option>
+
+                <option>Jumbo Statue </option>
+
+            </select>
+
+            <br>
+
+            <ul class="list-inline rating-list">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+            <ul class="list-inline rating-list">
+              <li><i class="fa fa-star yellow"></i></li>
+              <li><i class="fa fa-star yellow"></i></li>
+              <li><i class="fa fa-star yellow"></i></li>
+              <li><i class="fa fa-star yellow"></i></li>
+              <li><i class="fa fa-star gray"></i></li>
+            </ul>
+
+<!--
+            <div id="starrating">
+
+                <a href="#" id="1star"><i class="fa fa-star"></i></a>
+
+                <a href="#" id="2star"><i class="fa fa-star"></i></a>
+
+                <a href="#" id="3star"><i class="fa fa-star"></i></a>
+
+                <a href="#" id="4star"><i class="fa fa-star"></i></a>
+
+                <a href="#" id="5star"><i class="fa fa-star"></i></a>
+
+            </div>
+-->
+            <textarea id="feedback"></textarea>
+
+            <input type="submit" onclick="getInfo()">
+
+
+        </form>
+        <script language="javascript">
+
+            function getInfo() {
+
+                var location = document.getElementById("locationChoice").value;
+
+            }
+
+            var current_star_statusses = [];
+
+
+
+            star_elements = $('.fa-star').parent();
+
+            star_elements.find(".fa-star").each(function(i, elem) {
+              current_star_statusses.push($(elem).hasClass('yellow'));
+            });
+
+            star_elements.find(".fa-star").mouseenter(changeRatingStars);
+
+            star_elements.find(".fa-star").mouseleave(resetRatingStars);
+
+
+            function changeRatingStars() {
+
+                // Current star hovered
+
+                var star = $(this);
+
+                // Removes all colors first from all stars
+
+                $('.fa-star').removeClass('gray').removeClass('yellow');
+
+                // Makes the current hovered star yellow
+
+                star.addClass('yellow');
+
+                // Makes the previous stars yellow and the next stars gray
+
+                star.parent().prevAll().children('.fa-star').addClass('yellow');
+
+                star.parent().nextAll().children('.fa-star').addClass('gray');
+
+            }
+
+
+
+            /*
+
+            * Resets the rating star colors when not hovered anymore.
+
+            */
+
+            function resetRatingStars()
+            {
+
+                star_elements.each(function(i, elem) {
+
+                    $(elem).removeClass('yellow').removeClass('gray').addClass(current_star_statusses[i] ? 'yellow' : 'gray');
+
+                });
+
+            }
+
+        </script>
+    </body>
+
+
+
+</html>
+
+stylish css
+
+a {
+
+    color: rgb(100,100,100);
+
+    text-decoration: none;
+
+}
+
+a:hover {
+
+    color: #6B8E23;
+
+}
+
+.fa-star:before {
+  content: "\f005";
+}
+
+.rating-list li i.yellow {
+  color: #FFD700;
+}
+
+.rating-list li i.gray {
+  color: #bbb;
+}
+
+.list-inline>li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.rating-list li {
+  padding: 0px;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
