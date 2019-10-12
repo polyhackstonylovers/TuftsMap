@@ -43,6 +43,7 @@
               var xhr = new XMLHttpRequest();
               xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
               xhr.open("GET", url + params, "true");
+              console.log(url+params);
               xhr.onreadystatechange = function () {
                 if(xhr.readyState == 4 && xhr.status == 200){
                   alert("Your review has successfully been submitted");
