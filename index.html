@@ -25,15 +25,29 @@
         <h1>Leave us a rating!</h1>
         
         <script language="javascript">
-            
+            var rating = 3;
             function getInfo() {
-
                 var location = document.getElementById("locationChoice").value;
-    
+                var review = document.getElementById("feedback").value;
+                sendData(location, review);
             }
             
             function getStars(numStars) {
-                alert(numStars);
+                rating = numStars;
+            }
+            
+            function sendData(location, review)
+            {
+              var url = "http://afternoon-garden-34580.herokuapp.com/insert?";
+              var params = "place=" + location + "&review=" + encodeURIComponent(review) + "&rating=" + rating;
+              var xhr = XMLHttpRequest();
+              xhr.open("GET", url + params);
+              xhr.onreadystatechange = function () {
+                if(xhr.readyState == 4 && xhr.status == 200){
+                  alert("Your review has successfully been submitted");
+                }
+              }
+              xhr.send(null);
             }
         </script>
 
